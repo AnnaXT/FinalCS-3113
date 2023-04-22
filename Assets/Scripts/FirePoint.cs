@@ -7,17 +7,17 @@ public class FirePoint : MonoBehaviour
     public Bullet bullet;
     public FixedJoystick aimJoystick;
 
-    Vector2 aimVelocity;
-    Vector2 direction;
+    Vector3 aimVelocity;
+    Vector3 direction;
     
     void Update()
     {
         direction = (transform.localRotation * Vector2.right).normalized;
 
         aimVelocity = new Vector3 (aimJoystick.Horizontal, aimJoystick.Vertical, 0f);
-        Vector3 AimInput = new Vector3 (-aimVelocity.y, aimVelocity.x, 0f);
-        Vector3 lookAtPoint =  AimInput;
-        transform.LookAt (new Vector3(0, 0, 1), lookAtPoint);
+        Vector3 AimInput = new Vector3 (aimVelocity.x, aimVelocity.y, 0f);
+        direction =  AimInput;
+        // transform.LookAt (new Vector3(0, 0, 1), lookAtPoint);
     }
 
     public void Shoot()
