@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
+
+    // public static Player instance;
+    
     public FixedJoystick moveJoystick;
     public FixedJoystick aimJoystick;
     public FirePoint firePoint;
@@ -11,14 +15,15 @@ public class PlayerControl : MonoBehaviour
     Vector2 moveVelocity;
     Vector2 aimVelocity;
     
-    private Rigidbody rb;
+    Rigidbody rb;
+    GameManager _gameManager;
     
     public float moveSpeed;
-    // public float fireSpeed;
 
 
     private void Start () {
         rb = GetComponent<Rigidbody> ();
+        _gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     private void Update()
@@ -42,5 +47,23 @@ public class PlayerControl : MonoBehaviour
         {
             firePoint.Shoot();
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if (other.CompareTag("Enemy")){
+            _gameManager.minusLife();
+            if (!other.CompareTag("enemy")){
+                Destroy(other.gameObject);
+            }
+            if (_gameManager.getLife() == 0){
+                GameOver();
+            }
+        }
+    }
+
+    public void GameOver()
+    {
+        // Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
