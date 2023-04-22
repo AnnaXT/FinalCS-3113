@@ -11,13 +11,21 @@ public class enemy : MonoBehaviour
     private bool chase = true;
     public float interval = 2f;
     private float waitTime = 2f;
-    GameManager _gameManager;
+    //GameManager _gameManager;
+
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if(collision.GameObject.tag == "bullet")
+    //     {
+    //         Destroy(collision.GameObject);
+    //     }
+    // }
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         waitTime = interval;
-        _gameManager = GameObject.FindObjectOfType<GameManager>();
+        //_gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -38,13 +46,13 @@ public class enemy : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other){
-        if (other.CompareTag("Player")){
-            //other.GetComponent<PlayerHealth>().ChangeLifeVal(-1);
-            _gameManager.UpdateLives(-1);
-            chase = false;
+    // private void OnTriggerEnter(Collider other){
+    //     if (other.CompareTag("Player")){
+    //         //other.GetComponent<PlayerHealth>().ChangeLifeVal(-1);
+    //         _gameManager.UpdateLives(-1);
+    //         chase = false;
             
-        }
+    //     }
 
-    }
+    // }
 }
