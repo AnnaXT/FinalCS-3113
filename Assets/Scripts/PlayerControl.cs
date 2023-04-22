@@ -50,12 +50,11 @@ public class PlayerControl : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        if (other.CompareTag("Enemy")){
+        if (other.CompareTag("enemy"))
+        {
             _gameManager.minusLife();
-            if (!other.CompareTag("enemy")){
-                Destroy(other.gameObject);
-            }
-            if (_gameManager.getLife() == 0){
+            if (_gameManager.getLife() == 0)
+            {
                 GameOver();
             }
         }

@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    int coin = 0;
     int life = 5;
     string levelName;
 
+    public TMPro.TextMeshProUGUI coinUI;
     public TMPro.TextMeshProUGUI lifeUI;
 
     private bool GameOver = false;
@@ -32,7 +34,24 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        coinUI.text = "COIN: " + coin;
         lifeUI.text = "LIFE: " + life;
+    }
+
+    public void minusCoin(int amount)
+    {
+        coin -= amount;
+        coinUI.text = "COIN: " + coin;
+    }
+
+    public void addCoin(int amount)
+    {
+        coin += amount;
+        coinUI.text = "COIN: " + coin;
+    }
+
+    public float getCoin(){
+        return coin;
     }
 
     public void minusLife()
@@ -80,6 +99,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator swapToLost() {
         yield return new WaitForSeconds(1);
+        coin = 0;
         life = 5;
         SceneManager.LoadScene("GameOver");
     }
