@@ -17,7 +17,6 @@ public class FirePoint : MonoBehaviour
         aimVelocity = new Vector3 (aimJoystick.Horizontal, aimJoystick.Vertical, 0f);
         Vector3 AimInput = new Vector3 (aimVelocity.x, aimVelocity.y, 0f);
         direction =  AimInput;
-        // transform.LookAt (new Vector3(0, 0, 1), lookAtPoint);
     }
 
     public void Shoot()
@@ -26,5 +25,4 @@ public class FirePoint : MonoBehaviour
         Bullet goBullet = go.GetComponent<Bullet> ();
         goBullet.direction = direction;
     }
-
 }
