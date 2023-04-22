@@ -32,19 +32,15 @@ public class PlayerControl : MonoBehaviour
         // Aim
         aimVelocity = new Vector3 (aimJoystick.Horizontal, aimJoystick.Vertical, 0f);
         Vector3 AimInput = new Vector3 (aimVelocity.x, aimVelocity.y, 0f);
-        
-        if (aimJoystick.Horizontal != 0 && aimJoystick.Vertical != 0.0f)
+
+
+        if (aimJoystick.Horizontal >= 0.6f || aimJoystick.Vertical >= 0.6f)
         {
             firePoint.Shoot();
         }
-
-        // if (aimJoystick.Horizontal >= 0.6f || aimJoystick.Vertical >= 0.6f)
-        // {
-        //     firePoint.Shoot();
-        // }
-        // else if(aimJoystick.Horizontal <= -0.6f || aimJoystick.Vertical <= -0.6f)
-        // {
-        //     firePoint.Shoot();
-        // }
+        else if(aimJoystick.Horizontal <= -0.6f || aimJoystick.Vertical <= -0.6f)
+        {
+            firePoint.Shoot();
+        }
     }
 }
