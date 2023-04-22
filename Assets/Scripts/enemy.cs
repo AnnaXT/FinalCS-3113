@@ -35,7 +35,6 @@ public class enemy : MonoBehaviour
             waitTime -= Time.deltaTime;
         }
         else{
-            transform.LookAt(player.transform);
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
         
@@ -51,8 +50,6 @@ public class enemy : MonoBehaviour
     //         //other.GetComponent<PlayerHealth>().ChangeLifeVal(-1);
     //         _gameManager.UpdateLives(-1);
     //         chase = false;
-            
     //     }
-
     // }
 }
