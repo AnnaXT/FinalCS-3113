@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playercontroller : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
     public FixedJoystick moveJoystick;
     public FixedJoystick aimJoystick;
+    public FirePoint firePoint;
 
     Vector2 moveVelocity;
     Vector2 aimVelocity;
-    public Rigidbody rb;
+    
+    private Rigidbody rb;
     
     public float moveSpeed;
-    public float fireSpeed;
+    // public float fireSpeed;
+
 
     private void Start () {
         rb = GetComponent<Rigidbody> ();
@@ -29,7 +32,19 @@ public class playercontroller : MonoBehaviour
         // Aim
         aimVelocity = new Vector3 (aimJoystick.Horizontal, aimJoystick.Vertical, 0f);
         Vector3 AimInput = new Vector3 (aimVelocity.x, aimVelocity.y, 0f);
-        Vector3 lookAtPoint = transform.position + AimInput;
-        transform.LookAt (lookAtPoint);
+        
+        if (aimJoystick.Horizontal != 0 && aimJoystick.Vertical != 0.0f)
+        {
+            firePoint.Shoot();
+        }
+
+        // if (aimJoystick.Horizontal >= 0.6f || aimJoystick.Vertical >= 0.6f)
+        // {
+        //     firePoint.Shoot();
+        // }
+        // else if(aimJoystick.Horizontal <= -0.6f || aimJoystick.Vertical <= -0.6f)
+        // {
+        //     firePoint.Shoot();
+        // }
     }
 }
