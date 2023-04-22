@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7336914dd0a5b4132ade6859b45ae68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: -7451339860625551550, guid: 90dec9a25b2f04d729ebc80f3bd036ec, type: 3}
   aimJoystick: {fileID: 99524413}
 --- !u!1 &157301440
 GameObject:
@@ -1048,10 +1049,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveJoystick: {fileID: 1618430768}
   aimJoystick: {fileID: 99524413}
-  bullet: {fileID: 5508919879874701246, guid: 90dec9a25b2f04d729ebc80f3bd036ec, type: 3}
-  firePoint: {fileID: 146679298}
+  firePoint: {fileID: 146679299}
   moveSpeed: 5
-  fireSpeed: 500
 --- !u!54 &2098316122
 Rigidbody:
   m_ObjectHideFlags: 0
