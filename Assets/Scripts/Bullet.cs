@@ -5,9 +5,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Vector3 direction;
-    public float speed = 2;
-
     public Vector3 velocity;
+
+    public float speed = 10;
 
     void Start()
     {    
