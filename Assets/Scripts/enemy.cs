@@ -51,8 +51,6 @@ public class enemy : MonoBehaviour
     //         //other.GetComponent<PlayerHealth>().ChangeLifeVal(-1);
     //         _gameManager.UpdateLives(-1);
     //         chase = false;
-            
     //     }
-
     // }
 }
