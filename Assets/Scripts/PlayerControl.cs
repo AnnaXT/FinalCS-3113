@@ -65,14 +65,11 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other){
-        if (other.CompareTag("enemy"))
+    void OnTriggerEnter(Collider other){
+        if (other.CompareTag("soul"))
         {
-            _gameManager.minusLife();
-            if (_gameManager.getLife() == 0)
-            {
-                GameOver();
-            }
+            _gameManager.addSoul(10);
+            Destroy(other.gameObject);
         }
     }
 
