@@ -11,6 +11,8 @@ public class enemy : MonoBehaviour
     private bool chase = true;
     public float interval = 2f;
     private float waitTime = 2f;
+
+    private Animator _animator;
     //GameManager _gameManager;
 
     // private void OnCollisionEnter2D(Collision2D collision)
@@ -25,12 +27,20 @@ public class enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         waitTime = interval;
+        _animator = gameObject.GetComponent<Animator>();
         //_gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        float playerY = player.transform.position.y;
+        if (playerY >= transform.position.y){
+            _animator.SetBool("Above", false);
+        }
+        else{
+            _animator.SetBool("Above", true);
+        }
         if (chase == false){
             waitTime -= Time.deltaTime;
         }

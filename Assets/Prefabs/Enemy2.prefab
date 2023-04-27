@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 667106814470688437}
   - component: {fileID: 667106814470688439}
   - component: {fileID: 3838030962526243334}
+  - component: {fileID: -4006948360488979357}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -118,5 +119,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca65e32b20b749669a821a67e27c255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 1
   interval: 2
+--- !u!65 &-4006948360488979357
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667106814470688434}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.565, y: 0.81500006, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
