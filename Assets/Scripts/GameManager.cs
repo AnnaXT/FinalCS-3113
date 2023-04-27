@@ -7,7 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    int soul = 0;
+    public int soul = 0;
+    public int maxLife = 10;
+    int life;
+    public int playerSpeed = 5;
+    public int bulletSpeed = 10;
+    public int dmg = 1;
+
+    public Image healthBar;
+
     string levelName;
 
     public TMPro.TextMeshProUGUI soulUI;
@@ -33,6 +41,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         soulUI.text = "" + soul;
+        life = maxLife;
+
     }
 
     public void minusSoul(int amount)
@@ -47,32 +57,60 @@ public class GameManager : MonoBehaviour
         soulUI.text = "" + soul;
     }
 
-    public float getSoul(){
+    public int getSoul(){
         return soul;
     }
 
-    // public void minusLife(int amount)
-    // {
-    //     if (life > 0)
-    //     {
-    //         life -= amount;
-    //         if (life == 0){
-    //             GameOver = true;
-    //         }
-    //     }
-    // }
+    public void minusLife(int amount)
+    {
+        if (life > 0)
+        {
+            life -= amount;
+            
+            if (life == 0){
+                GameOver = true;
+            }
+        }
+    }
 
-    // public void addLife(int amount)
-    // {
-    //     if (life > 0)
-    //     {
-    //         life += amount;
-    //     }
-    // }
+    public void addLife(int amount)
+    {
+        if (life > 0)
+        {
+            life += amount;
+        }
+    }
 
-    // public int getLife(){
-    //     return life;
-    // }
+    public int getLife(){
+        return life;
+    }
+
+    public void incrPlayerSpeed(int amount)
+    {
+        playerSpeed += amount;
+    }
+
+    public int getPlayerSpeed(){
+        return playerSpeed;
+    }
+
+    public void incrBulletSpeed(int amount)
+    {
+        bulletSpeed += amount;
+    }
+
+    public int getBulletSpeed(){
+        return bulletSpeed;
+    }
+
+    public void incrDmg(int amount)
+    {
+        dmg += amount;
+    }
+
+    public int getDmg(){
+        return dmg;
+    }
 
     void screenChecker()
     {
@@ -85,6 +123,9 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+
+        healthBar.fillAmount = life / maxLife;
+
         if (GameOver){
             StartCoroutine(swapToLost());
             GameOver = false;
