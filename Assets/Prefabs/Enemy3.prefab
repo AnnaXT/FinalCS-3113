@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1069588836605148300}
   - component: {fileID: 1069588836605148303}
   - component: {fileID: 1069588836605148302}
+  - component: {fileID: -7124935736659295792}
+  - component: {fileID: 6751465010689660403}
   m_Layer: 0
   m_Name: Enemy3
   m_TagString: Untagged
@@ -105,3 +107,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!65 &-7124935736659295792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069588836605148297}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7325, y: 0.8375, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6751465010689660403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069588836605148297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca65e32b20b749669a821a67e27c255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.1
+  interval: 2
