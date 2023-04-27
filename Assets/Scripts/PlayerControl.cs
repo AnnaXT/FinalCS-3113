@@ -65,7 +65,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other){
+    void OnTriggerEnter(Collider other){
         if (other.CompareTag("soul"))
         {
             _gameManager.addSoul(10);
