@@ -7,12 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    int coin = 0;
-    int life = 5;
+    int soul = 0;
     string levelName;
 
-    public TMPro.TextMeshProUGUI coinUI;
-    public TMPro.TextMeshProUGUI lifeUI;
+    public TMPro.TextMeshProUGUI soulUI;
 
     private bool GameOver = false;
 
@@ -34,50 +32,47 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        coinUI.text = "COIN: " + coin;
-        lifeUI.text = "LIFE: " + life;
+        soulUI.text = "" + soul;
     }
 
-    public void minusCoin(int amount)
+    public void minusSoul(int amount)
     {
-        coin -= amount;
-        coinUI.text = "COIN: " + coin;
+        soul -= amount;
+        soulUI.text = "" + soul;
     }
 
-    public void addCoin(int amount)
+    public void addSoul(int amount)
     {
-        coin += amount;
-        coinUI.text = "COIN: " + coin;
+        soul += amount;
+        soulUI.text = "" + soul;
     }
 
-    public float getCoin(){
-        return coin;
+    public float getSoul(){
+        return soul;
     }
 
-    public void minusLife()
-    {
-        if (life > 0)
-        {
-            life -= 1;
-            lifeUI.text = "LIFE: " + life;
-            if (life == 0){
-                GameOver = true;
-            }
-        }
-    }
+    // public void minusLife(int amount)
+    // {
+    //     if (life > 0)
+    //     {
+    //         life -= amount;
+    //         if (life == 0){
+    //             GameOver = true;
+    //         }
+    //     }
+    // }
 
-    public void addLife()
-    {
-        if (life > 0)
-        {
-            life += 1;
-            lifeUI.text = "LIFE: " + life;
-        }
-    }
+    // public void addLife(int amount)
+    // {
+    //     if (life > 0)
+    //     {
+    //         life += amount;
+    //     }
+    // }
 
-    public int getLife(){
-        return life;
-    }
+    // public int getLife(){
+    //     return life;
+    // }
 
     void screenChecker()
     {
@@ -99,8 +94,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator swapToLost() {
         yield return new WaitForSeconds(1);
-        coin = 0;
-        life = 5;
+        soul = 0;
         SceneManager.LoadScene("GameOver");
     }
 }
