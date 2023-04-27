@@ -241,7 +241,6 @@ MonoBehaviour:
   moveJoystick: {fileID: 2136558775}
   aimJoystick: {fileID: 916440764}
   firePoint: {fileID: 1161721793}
-  moveSpeed: 5
 --- !u!212 &224185034
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1421,6 +1420,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbccd1bd110ce43eb87e311ee3f766b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soul: 0
+  maxLife: 10
+  playerSpeed: 5
+  bulletSpeed: 10
+  dmg: 1
+  healthBar: {fileID: 0}
   soulUI: {fileID: 1807397009}
 --- !u!4 &1747627927
 Transform:
@@ -1635,7 +1640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89045d03fc8cf4fbc9ffe68c9e4f73cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soul: {fileID: 0}
+  soul: {fileID: 1743777843843613026, guid: f059634b604d34cefb92f9db6994dca4, type: 3}
 --- !u!114 &1873688798
 MonoBehaviour:
   m_ObjectHideFlags: 0

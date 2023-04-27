@@ -24,7 +24,7 @@ public class KillEnemy : MonoBehaviour
         if (collision.gameObject.tag == "player bullet")
         {
             Destroy(collision.gameObject);
-            health -= 1;
+            health -= _gameManager.getDmg();
             if (health <= 0)
             {
                 Destroy(gameObject);

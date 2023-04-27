@@ -18,7 +18,6 @@ public class PlayerControl : MonoBehaviour
     Rigidbody rb;
     GameManager _gameManager;
     
-    public float moveSpeed;
 
     private bool shooting;
 
@@ -42,7 +41,7 @@ public class PlayerControl : MonoBehaviour
             _animator.SetBool("Flying", true);
         }
         Vector3 moveInput = new Vector3 (moveVelocity.x, moveVelocity.y, 0f);
-        Vector3 moveDir = moveInput.normalized * moveSpeed;
+        Vector3 moveDir = moveInput.normalized * _gameManager.getPlayerSpeed();
         rb.MovePosition (rb.position + moveDir * Time.deltaTime);
 
         // Aim
@@ -52,7 +51,6 @@ public class PlayerControl : MonoBehaviour
 
         if (aimJoystick.Horizontal >= 0.6f || aimJoystick.Vertical >= 0.6f)
         {
-
             shooting = true;
         }
         else if(aimJoystick.Horizontal <= -0.6f || aimJoystick.Vertical <= -0.6f)

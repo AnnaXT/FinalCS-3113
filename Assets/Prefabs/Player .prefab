@@ -122,8 +122,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1169813205
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 1277746897, guid: 05b516d1fb3b54b1988b64710e793cad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -187,7 +187,6 @@ MonoBehaviour:
   moveJoystick: {fileID: 0}
   aimJoystick: {fileID: 0}
   firePoint: {fileID: 8734169165173164644}
-  moveSpeed: 5
 --- !u!136 &-6315058699786897447
 CapsuleCollider:
   m_ObjectHideFlags: 0
