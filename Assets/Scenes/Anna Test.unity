@@ -130,9 +130,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8734169165173164644, guid: 587507b8f7a1546f49e7c01fb8ac588f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8734169165748750402, guid: 587507b8f7a1546f49e7c01fb8ac588f, type: 3}
       propertyPath: m_Name
       value: 'Player '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734169165748750412, guid: 587507b8f7a1546f49e7c01fb8ac588f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8734169165748750413, guid: 587507b8f7a1546f49e7c01fb8ac588f, type: 3}
       propertyPath: m_RootOrder
@@ -176,6 +184,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8734169165748750413, guid: 587507b8f7a1546f49e7c01fb8ac588f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734169167177505470, guid: 587507b8f7a1546f49e7c01fb8ac588f, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
