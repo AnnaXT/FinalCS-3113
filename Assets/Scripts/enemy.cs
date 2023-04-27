@@ -7,6 +7,7 @@ public class enemy : MonoBehaviour
     Rigidbody _rigidbody;
     private GameObject player;
     public float speed = 0.2f;
+    public float health = 2;
 
     private bool chase = true;
     public float interval = 2f;
@@ -54,6 +55,23 @@ public class enemy : MonoBehaviour
         }
         
     }
+
+    public void changeSpeed(float val){
+        speed += val;
+    }
+
+    public void setSpeed(float val){
+        speed = val;
+    }
+
+    public void changeHealth(float val){
+        health += val;
+    }
+
+    public void setHealth(float val){
+        health = val;
+    }
+
 
     // private void OnTriggerEnter(Collider other){
     //     if (other.CompareTag("Player")){
