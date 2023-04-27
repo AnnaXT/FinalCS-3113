@@ -20,10 +20,12 @@ public class PlayerControl : MonoBehaviour
     
     public float moveSpeed;
 
+    private bool shooting;
 
     private void Start () {
         rb = GetComponent<Rigidbody> ();
         _gameManager = GameObject.FindObjectOfType<GameManager>();
+        StartCoroutine(AutoFire(0.1f));
     }
 
     private void Update()
@@ -41,11 +43,16 @@ public class PlayerControl : MonoBehaviour
 
         if (aimJoystick.Horizontal >= 0.6f || aimJoystick.Vertical >= 0.6f)
         {
-            firePoint.Shoot();
+
+            shooting = true;
         }
         else if(aimJoystick.Horizontal <= -0.6f || aimJoystick.Vertical <= -0.6f)
         {
-            firePoint.Shoot();
+            shooting = true;
+        }
+        else
+        {
+            shooting = false;
         }
     }
 
@@ -64,5 +71,17 @@ public class PlayerControl : MonoBehaviour
     {
         // Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    IEnumerator AutoFire(float waitTime)
+    {
+        while (true)
+        {
+            if (shooting)
+            {
+                firePoint.Shoot();
+            }
+            yield return new WaitForSeconds(waitTime);
+        }
     }
 }
