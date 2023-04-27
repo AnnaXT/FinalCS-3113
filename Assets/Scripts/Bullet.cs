@@ -7,16 +7,17 @@ public class Bullet : MonoBehaviour
     public Vector3 direction;
     public Vector3 velocity;
 
-    public float speed = 10;
+    GameManager _gameManager;
 
     void Start()
-    {    
+    {   
+        _gameManager = GameObject.FindObjectOfType<GameManager>();
         Destroy(gameObject, 1);
     }
 
     void Update()
     {
-        velocity = direction * speed;
+        velocity = direction * _gameManager.getBulletSpeed();
     }
 
     private void FixedUpdate()

@@ -18,22 +18,30 @@ public class PlayerControl : MonoBehaviour
     Rigidbody rb;
     GameManager _gameManager;
     
-    public float moveSpeed;
 
     private bool shooting;
+
+    private Animator _animator;
 
     private void Start () {
         rb = GetComponent<Rigidbody> ();
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         StartCoroutine(AutoFire(0.1f));
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         // movement
         moveVelocity = new Vector3 (moveJoystick.Horizontal, moveJoystick.Vertical, 0f);
+        if (moveVelocity[0] == 0 && moveVelocity[1] == 0){
+            _animator.SetBool("Flying", false);
+        }
+        else{
+            _animator.SetBool("Flying", true);
+        }
         Vector3 moveInput = new Vector3 (moveVelocity.x, moveVelocity.y, 0f);
-        Vector3 moveDir = moveInput.normalized * moveSpeed;
+        Vector3 moveDir = moveInput.normalized * _gameManager.getPlayerSpeed();
         rb.MovePosition (rb.position + moveDir * Time.deltaTime);
 
         // Aim
@@ -43,7 +51,6 @@ public class PlayerControl : MonoBehaviour
 
         if (aimJoystick.Horizontal >= 0.6f || aimJoystick.Vertical >= 0.6f)
         {
-
             shooting = true;
         }
         else if(aimJoystick.Horizontal <= -0.6f || aimJoystick.Vertical <= -0.6f)
@@ -56,14 +63,11 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other){
-        if (other.CompareTag("enemy"))
+    void OnTriggerEnter(Collider other){
+        if (other.CompareTag("soul"))
         {
-            _gameManager.minusLife();
-            if (_gameManager.getLife() == 0)
-            {
-                GameOver();
-            }
+            _gameManager.addSoul(10);
+            Destroy(other.gameObject);
         }
     }
 

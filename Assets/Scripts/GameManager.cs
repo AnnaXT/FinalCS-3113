@@ -7,12 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    int coin = 0;
-    int life = 5;
+    public int soul = 0;
+    public int maxLife = 10;
+    int life;
+    public int playerSpeed = 5;
+    public int bulletSpeed = 10;
+    public int dmg = 1;
+
+    public Image healthBar;
+
     string levelName;
 
-    public TMPro.TextMeshProUGUI coinUI;
-    public TMPro.TextMeshProUGUI lifeUI;
+    public TMPro.TextMeshProUGUI soulUI;
 
     private bool GameOver = false;
 
@@ -34,49 +40,76 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        coinUI.text = "COIN: " + coin;
-        lifeUI.text = "LIFE: " + life;
+        soulUI.text = "" + soul;
+        life = maxLife;
+
     }
 
-    public void minusCoin(int amount)
+    public void minusSoul(int amount)
     {
-        coin -= amount;
-        coinUI.text = "COIN: " + coin;
+        soul -= amount;
+        soulUI.text = "" + soul;
     }
 
-    public void addCoin(int amount)
+    public void addSoul(int amount)
     {
-        coin += amount;
-        coinUI.text = "COIN: " + coin;
+        soul += amount;
+        soulUI.text = "" + soul;
     }
 
-    public float getCoin(){
-        return coin;
+    public int getSoul(){
+        return soul;
     }
 
-    public void minusLife()
+    public void minusLife(int amount)
     {
         if (life > 0)
         {
-            life -= 1;
-            lifeUI.text = "LIFE: " + life;
+            life -= amount;
+            
             if (life == 0){
                 GameOver = true;
             }
         }
     }
 
-    public void addLife()
+    public void addLife(int amount)
     {
         if (life > 0)
         {
-            life += 1;
-            lifeUI.text = "LIFE: " + life;
+            life += amount;
         }
     }
 
     public int getLife(){
         return life;
+    }
+
+    public void incrPlayerSpeed(int amount)
+    {
+        playerSpeed += amount;
+    }
+
+    public int getPlayerSpeed(){
+        return playerSpeed;
+    }
+
+    public void incrBulletSpeed(int amount)
+    {
+        bulletSpeed += amount;
+    }
+
+    public int getBulletSpeed(){
+        return bulletSpeed;
+    }
+
+    public void incrDmg(int amount)
+    {
+        dmg += amount;
+    }
+
+    public int getDmg(){
+        return dmg;
     }
 
     void screenChecker()
@@ -90,6 +123,9 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+
+        healthBar.fillAmount = life / maxLife;
+
         if (GameOver){
             StartCoroutine(swapToLost());
             GameOver = false;
@@ -99,8 +135,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator swapToLost() {
         yield return new WaitForSeconds(1);
-        coin = 0;
-        life = 5;
+        soul = 0;
         SceneManager.LoadScene("GameOver");
     }
 }
