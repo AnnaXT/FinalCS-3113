@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbccd1bd110ce43eb87e311ee3f766b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinUI: {fileID: 0}
+  coinUI: {fileID: 1249705623}
   lifeUI: {fileID: 734593672}
 --- !u!4 &641032876
 Transform:
