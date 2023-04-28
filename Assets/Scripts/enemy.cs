@@ -6,8 +6,11 @@ public class enemy : MonoBehaviour
 {
     Rigidbody _rigidbody;
     private GameObject player;
+    public EnemyHealthBar healthBar;
+    public GameObject soul;
     public float speed = 0.2f;
-    public float health = 2;
+    public int maxHealth = 2;
+    int health;
 
     private bool chase = true;
     public float interval = 2f;
@@ -26,9 +29,14 @@ public class enemy : MonoBehaviour
 
     void Start()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
         waitTime = interval;
         _animator = gameObject.GetComponent<Animator>();
+
+        health = maxHealth;
+        healthBar.setMaxHealth();
+
         //_gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
@@ -64,20 +72,28 @@ public class enemy : MonoBehaviour
         speed = val;
     }
 
-    public void changeHealth(float val){
+    public void changeHealth(int val){
         health += val;
     }
 
-    public void setHealth(float val){
+    public void setHealth(int val){
         health = val;
     }
 
+    public int getHealth(){
+        return health;
+    }
 
-    // private void OnTriggerEnter(Collider other){
-    //     if (other.CompareTag("Player")){
-    //         //other.GetComponent<PlayerHealth>().ChangeLifeVal(-1);
-    //         _gameManager.UpdateLives(-1);
-    //         chase = false;
-    //     }
-    // }
+    private void OnTriggerEnter(Collider other){
+        if (other.CompareTag("player bullet")){
+            print(0);
+            Destroy(other.gameObject);
+            changeHealth(-1);
+            healthBar.setHealth();
+            if (health == 0){
+                Destroy(gameObject);
+                Instantiate(soul, transform.position, Quaternion.identity);
+            }
+        }
+    }
 }
