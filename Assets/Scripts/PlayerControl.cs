@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -12,8 +13,14 @@ public class PlayerControl : MonoBehaviour
     public FixedJoystick aimJoystick;
     public FirePoint firePoint;
     public HealthBar healthBar;
+    public TextMeshProUGUI soulUI;
+
+    public AudioClip hurtSnd;
+    public AudioClip dieSnd;
+    public AudioClip shootSnd;
 
     Vector2 moveVelocity;
+    AudioSource _audioSource;
     Vector2 aimVelocity;
     
     Rigidbody rb;
@@ -22,17 +29,24 @@ public class PlayerControl : MonoBehaviour
     private bool shooting;
     public int soul = 1000;
     public int health = 10;
+    public int maxHealth = 10;
     public int playerSpeed = 5;
+    public float ammo = 0.5f;
 
     private Animator _animator;
+    private shopmanager _shop;
 
     private void Start () {
         rb = GetComponent<Rigidbody> ();
+        _shop = GameObject.FindObjectOfType<shopmanager>();
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+        
         // _gameManager = GameObject.FindObjectOfType<GameManager>();
-        StartCoroutine(AutoFire(0.1f));
-
-        healthBar.setMaxHealthBar(health);
+        StartCoroutine(AutoFire(ammo));
+        soulUI.text = "" + soul;
+        healthBar.setMaxHealthBar(maxHealth);
+        healthBar.setHealthBar(health);
     }
 
     private void Update()
@@ -66,12 +80,21 @@ public class PlayerControl : MonoBehaviour
         {
             shooting = false;
         }
+
+        if (health == 0)
+        {
+            _audioSource.PlayOneShot(dieSnd);
+            Destroy(gameObject); 
+            SceneManager.LoadScene("lose");
+        }
     }
 
     void OnTriggerEnter(Collider other){
         if (other.CompareTag("soul"))
         {
             soul += 10;
+            _shop.setCoin(10);
+            soulUI.text = "" + soul;
             Destroy(other.gameObject);
         }
 
@@ -79,16 +102,11 @@ public class PlayerControl : MonoBehaviour
         {
             print(0);
             health -= 1;
+            _audioSource.PlayOneShot(hurtSnd);
             healthBar.setHealthBar(health);
             Destroy(other.gameObject);
         }
 
-    }
-
-    public void GameOver()
-    {
-        // Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
     }
 
     IEnumerator AutoFire(float waitTime)
@@ -98,8 +116,30 @@ public class PlayerControl : MonoBehaviour
             if (shooting)
             {
                 firePoint.Shoot();
+                _audioSource.PlayOneShot(shootSnd);
             }
             yield return new WaitForSeconds(waitTime);
         }
+    }
+
+    public void setSouls(int amount)
+    {
+        soul += amount;
+        soulUI.text = "" + soul;
+    }
+
+    public void incrHealth()
+    {
+        maxHealth += 1;
+        health += 1;
+        healthBar.setMaxHealthBar(maxHealth);
+        healthBar.setHealthBar(health);
+    }
+
+    public void incrAmmo()
+    {
+        ammo -= 0.1f;
+        StopCoroutine(AutoFire(ammo));
+        StartCoroutine(AutoFire(ammo));
     }
 }
