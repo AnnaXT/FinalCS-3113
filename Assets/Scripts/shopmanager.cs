@@ -12,7 +12,7 @@ public class shopmanager : MonoBehaviour
     public float outsidecoins;
     public Text CoinsTXT;
     public TextMeshProUGUI outsidecoinsTXT;
-
+    
     private PlayerControl _player;
 
     void Start()
@@ -51,7 +51,7 @@ public class shopmanager : MonoBehaviour
             _player.setSouls(-shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID]);
             shopItems[3, ButtonRef.GetComponent<buttoninfo>().ItemID]++;
             CoinsTXT.text = "Coins:" + coins.ToString();
-            outsidecoinsTXT.text = coins.ToString();
+            outsidecoinsTXT.text = (coins).ToString();
             ButtonRef.GetComponent<buttoninfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
             shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID] *= 2;
             ButtonRef.GetComponent<buttoninfo>().PriceTxt.text = shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
