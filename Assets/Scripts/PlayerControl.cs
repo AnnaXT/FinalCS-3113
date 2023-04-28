@@ -11,23 +11,29 @@ public class PlayerControl : MonoBehaviour
     public FixedJoystick moveJoystick;
     public FixedJoystick aimJoystick;
     public FirePoint firePoint;
+    public HealthBar healthBar;
 
     Vector2 moveVelocity;
     Vector2 aimVelocity;
     
     Rigidbody rb;
     GameManager _gameManager;
-    
 
     private bool shooting;
+    public int maxHealth;
+    public int health;
 
     private Animator _animator;
 
     private void Start () {
         rb = GetComponent<Rigidbody> ();
+        _animator = GetComponent<Animator>();
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         StartCoroutine(AutoFire(0.1f));
-        _animator = GetComponent<Animator>();
+
+        maxHealth = _gameManager.getMaxLife();
+        health = maxHealth;
+        healthBar.setMaxHealth(maxHealth);
     }
 
     private void Update()
@@ -69,6 +75,14 @@ public class PlayerControl : MonoBehaviour
             _gameManager.addSoul(10);
             Destroy(other.gameObject);
         }
+
+        if (other.CompareTag("enemy"))
+        {
+            _gameManager.minusLife(1);
+            healthBar.setHealth(health);
+            Destroy(other.gameObject);
+        }
+
     }
 
     public void GameOver()
