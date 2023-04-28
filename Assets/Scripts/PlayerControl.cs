@@ -33,7 +33,7 @@ public class PlayerControl : MonoBehaviour
 
         maxHealth = _gameManager.getMaxLife();
         health = maxHealth;
-        healthBar.setMaxHealth(maxHealth);
+        healthBar.setMaxHealthBar(maxHealth);
     }
 
     private void Update()
@@ -79,7 +79,7 @@ public class PlayerControl : MonoBehaviour
         if (other.CompareTag("enemy"))
         {
             _gameManager.minusLife(1);
-            healthBar.setHealth(health);
+            healthBar.setHealthBar(health);
             Destroy(other.gameObject);
         }
 
