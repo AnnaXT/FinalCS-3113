@@ -12,7 +12,7 @@ public class buttoninfo : MonoBehaviour
 
     void Start ()
     {
-        PriceTxt.text = "Price: $" + ShopManager.GetComponent<shopmanager>().shopItems[2,ItemID];
+        PriceTxt.text = ShopManager.GetComponent<shopmanager>().shopItems[2,ItemID].ToString();
         QuantityTxt.text = ShopManager.GetComponent<shopmanager>().shopItems[3,ItemID].ToString();
     }
 }

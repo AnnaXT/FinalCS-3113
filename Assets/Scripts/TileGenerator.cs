@@ -14,6 +14,8 @@ public class TileGenerator : MonoBehaviour
     private float tileLength = 19f;
     private int tileNum = 3;
 
+    private float time = 0;
+
     private List<List<GameObject>> tiles;
 
 
@@ -42,6 +44,10 @@ public class TileGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+        if ((int)time/10 == 2){
+            changeZone(1);
+        }
         if(playerTransform.position.x > (spawnXRight - tileNum * tileLength)){
             SpawnTileRight(0);
             if(playerTransform.position.x > (spawnXLeft + tileNum * tileLength)){
@@ -163,4 +169,19 @@ public class TileGenerator : MonoBehaviour
         spawnYDown += tileLength;
             
     }
+
+    void changeZone(int prefabIndex=-1){
+        for(int i = 0; i < tiles.Count; ++i){
+            for(int j = 0; j < tiles[i].Count; ++j){
+                GameObject go;
+                go = Instantiate(tilePrefabs[prefabIndex]) as GameObject;
+                go.transform.position = tiles[i][j].transform.position;
+                Destroy(tiles[i][j]);
+                tiles[i][j] = go;
+            }
+        }
+
+    }
+
+    
 }
