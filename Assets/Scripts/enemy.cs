@@ -80,6 +80,7 @@ public class enemy : MonoBehaviour
     }
 
     public void setHealth(int val){
+        print("reset health");
         health = val;
         healthBar.setMaxHealthBar(maxHealth);
     }
