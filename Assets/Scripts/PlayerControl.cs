@@ -138,7 +138,7 @@ public class PlayerControl : MonoBehaviour
 
     public void incrAmmo()
     {
-        ammo -= 0.1f;
+        ammo *= 0.8f;
         StopCoroutine(AutoFire(ammo));
         StartCoroutine(AutoFire(ammo));
     }

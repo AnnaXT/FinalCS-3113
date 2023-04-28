@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {   
         // _gameManager = GameObject.FindObjectOfType<GameManager>();
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 2);
     }
 
     void Update()
