@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
 
     string levelName;
 
-    public TMPro.TextMeshProUGUI soulUI;
-
     private bool GameOver = false;
 
     private void Awake()
@@ -40,7 +38,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        soulUI.text = "" + soul;
         life = maxLife;
         // healthBar.setMaxHealth(maxLife);
     }
@@ -48,13 +45,11 @@ public class GameManager : MonoBehaviour
     public void minusSoul(int amount)
     {
         soul -= amount;
-        soulUI.text = "" + soul;
     }
 
     public void addSoul(int amount)
     {
         soul += amount;
-        soulUI.text = "" + soul;
     }
 
     public int getSoul(){
