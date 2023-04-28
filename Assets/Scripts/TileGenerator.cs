@@ -45,30 +45,31 @@ public class TileGenerator : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if ((int)time/10 == 2){
-            changeZone(1);
-        }
+        // if ((int)time/10 == 2){
+        //     changeZone(1);
+        // }
+        int spawnInd = (int)Random.Range(0,3);
         if(playerTransform.position.x > (spawnXRight - tileNum * tileLength)){
-            SpawnTileRight(0);
+            SpawnTileRight(spawnInd);
             if(playerTransform.position.x > (spawnXLeft + tileNum * tileLength)){
                 DeleteTileLeft();
             }
         }
         if(playerTransform.position.x < (spawnXLeft + tileNum * tileLength)){
-            SpawnTileLeft(0);
+            SpawnTileLeft(spawnInd);
             if (playerTransform.position.x < (spawnXRight - tileNum * tileLength)){
                 DeleteTileRight();
             }
         }
         if(playerTransform.position.y > (spawnYUp - tileNum * tileLength)){
-            SpawnTileUp(0);
+            SpawnTileUp(spawnInd);
             if(playerTransform.position.y > (spawnYDown + tileNum * tileLength)){
                 DeleteTileDown();
             }
         }
 
         if(playerTransform.position.y < (spawnYDown + tileNum * tileLength)){
-            SpawnTileDown(0);
+            SpawnTileDown(spawnInd);
             if(playerTransform.position.y < (spawnYUp - tileNum * tileLength)){
                 DeleteTileUp();
             }
