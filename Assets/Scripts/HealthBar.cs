@@ -7,8 +7,14 @@ public class HealthBar : MonoBehaviour
 {
     public Slider slider;
 
+    void Start(){
+        slider = gameObject.GetComponent<Slider>();
+    }
+
     public void setMaxHealthBar(int health)
     {
+        print("maxHset");
+        print(health);
         slider.maxValue = health;
         slider.value = health;
 
@@ -16,6 +22,8 @@ public class HealthBar : MonoBehaviour
 
     public void setHealthBar(int health)
     {
+        print("valSet");
+        print(health);
         slider.value = health;
     }
 }
