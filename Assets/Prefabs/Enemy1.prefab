@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 671474275, guid: 74b229b9b9e684a0b8b30d819dd00d7d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.83000004, y: 0.68}
@@ -213,7 +213,6 @@ MonoBehaviour:
   healthBar: {fileID: 4013835596536366567}
   soul: {fileID: 1743777843843613026, guid: f059634b604d34cefb92f9db6994dca4, type: 3}
   speed: 0.5
-  maxHealth: 20
   interval: 2
 --- !u!1 &5684786742614669570
 GameObject:

@@ -50,6 +50,7 @@ public class EnemySpawner : MonoBehaviour
         
         waitTime -= Time.deltaTime;
         if (waitTime <= 0){
+            print("Got here0");
             // use exponential here maybe as well
             Spawn1((int)timeTracker);
             waitTime = interval;
@@ -84,10 +85,13 @@ public class EnemySpawner : MonoBehaviour
                 rand2 = -rand2;
             }
 
-        Vector2 position = new Vector2(x + rand1, y + rand2);
-        GameObject enemy = Instantiate(enemy1, position, Quaternion.identity);
-        enemy.GetComponent<enemy>().setSpeed(enemy1Speed);
-        enemy.GetComponent<enemy>().setHealth(enemy1Health);
+            print("got here1");
+
+            Vector2 position = new Vector2(x + rand1, y + rand2);
+            GameObject enemy = Instantiate(enemy1, position, Quaternion.identity);
+            print("got here2");
+            enemy.GetComponent<enemy>().setSpeed(enemy1Speed);
+            enemy.GetComponent<enemy>().setHealth(enemy1Health);
         }
 
     }
@@ -108,10 +112,10 @@ public class EnemySpawner : MonoBehaviour
                 rand2 = -rand2;
             }
 
-        Vector2 position = new Vector2(x - rand1, y + rand2);
-        GameObject enemy = Instantiate(enemy2, position, Quaternion.identity);
-        enemy.GetComponent<enemy>().setSpeed(enemy2Speed);
-        enemy.GetComponent<enemy>().setHealth(enemy2Health);
+            Vector2 position = new Vector2(x - rand1, y + rand2);
+            GameObject enemy = Instantiate(enemy2, position, Quaternion.identity);
+            enemy.GetComponent<enemy>().setSpeed(enemy2Speed);
+            enemy.GetComponent<enemy>().setHealth(enemy2Health);
         }
 
     }
@@ -133,10 +137,10 @@ public class EnemySpawner : MonoBehaviour
                 rand2 = -rand2;
             }
 
-        Vector2 position = new Vector2(x - rand1, y + rand2);
-        GameObject enemy = Instantiate(enemy3, position, Quaternion.identity);
-        enemy.GetComponent<enemy>().setSpeed(enemy3Speed);
-        enemy.GetComponent<enemy>().setHealth(enemy3Health);
+            Vector2 position = new Vector2(x - rand1, y + rand2);
+            GameObject enemy = Instantiate(enemy3, position, Quaternion.identity);
+            enemy.GetComponent<enemy>().setSpeed(enemy3Speed);
+            enemy.GetComponent<enemy>().setHealth(enemy3Health);
         }
     }
 }
