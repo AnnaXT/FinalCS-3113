@@ -16,7 +16,7 @@ public class HealthBar : MonoBehaviour
         print("maxHset");
         print(health);
         slider.maxValue = health;
-        slider.value = health;
+        // slider.value = health;
 
     }
 
