@@ -138,6 +138,5 @@ public class EnemySpawner : MonoBehaviour
         enemy.GetComponent<enemy>().setSpeed(enemy3Speed);
         enemy.GetComponent<enemy>().setHealth(enemy3Health);
         }
-
     }
 }
