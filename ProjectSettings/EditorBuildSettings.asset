@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Anna2.unity
     guid: b336cc3eed2ef46e88f0663f1fbcf0cb
+  - enabled: 1
+    path: Assets/Scenes/lose.unity
+    guid: 22b674cf4e377455f8eb881a385cf2c3
   m_configObjects: {}

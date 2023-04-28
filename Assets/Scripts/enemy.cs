@@ -9,7 +9,7 @@ public class enemy : MonoBehaviour
     public HealthBar healthBar;
     public GameObject soul;
     public float speed = 0.2f;
-    public int maxHealth = 2;
+    private int maxHealth = 2;
     int health;
 
     private bool chase = true;
@@ -35,6 +35,8 @@ public class enemy : MonoBehaviour
         _animator = gameObject.GetComponent<Animator>();
 
         health = maxHealth;
+        GameObject temp = gameObject.transform.Find("Canvas (1)/Health Bar").gameObject;
+        healthBar = temp.GetComponent<HealthBar>();
         healthBar.setMaxHealthBar(maxHealth);
 
         //_gameManager = GameObject.FindObjectOfType<GameManager>();
@@ -74,10 +76,13 @@ public class enemy : MonoBehaviour
 
     public void changeHealth(int val){
         health += val;
+        healthBar.setHealthBar(health);
     }
 
     public void setHealth(int val){
+        print("reset health");
         health = val;
+        healthBar.setMaxHealthBar(maxHealth);
     }
 
     public int getHealth(){
@@ -86,7 +91,7 @@ public class enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("player bullet")){
-            print(0);
+            print(health);
             Destroy(other.gameObject);
             changeHealth(-1);
             healthBar.setHealthBar(health);
