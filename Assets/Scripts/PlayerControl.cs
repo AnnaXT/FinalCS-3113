@@ -17,23 +17,22 @@ public class PlayerControl : MonoBehaviour
     Vector2 aimVelocity;
     
     Rigidbody rb;
-    GameManager _gameManager;
+    // GameManager _gameManager;
 
     private bool shooting;
-    public int maxHealth;
-    public int health;
+    public int soul = 1000;
+    public int health = 10;
+    public int playerSpeed = 5;
 
     private Animator _animator;
 
     private void Start () {
         rb = GetComponent<Rigidbody> ();
         _animator = GetComponent<Animator>();
-        _gameManager = GameObject.FindObjectOfType<GameManager>();
+        // _gameManager = GameObject.FindObjectOfType<GameManager>();
         StartCoroutine(AutoFire(0.1f));
 
-        maxHealth = _gameManager.getMaxLife();
-        health = maxHealth;
-        healthBar.setMaxHealthBar(maxHealth);
+        healthBar.setMaxHealthBar(health);
     }
 
     private void Update()
@@ -47,7 +46,7 @@ public class PlayerControl : MonoBehaviour
             _animator.SetBool("Flying", true);
         }
         Vector3 moveInput = new Vector3 (moveVelocity.x, moveVelocity.y, 0f);
-        Vector3 moveDir = moveInput.normalized * _gameManager.getPlayerSpeed();
+        Vector3 moveDir = moveInput.normalized * playerSpeed;
         rb.MovePosition (rb.position + moveDir * Time.deltaTime);
 
         // Aim
@@ -72,13 +71,14 @@ public class PlayerControl : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if (other.CompareTag("soul"))
         {
-            _gameManager.addSoul(10);
+            soul += 10;
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("enemy"))
         {
-            _gameManager.minusLife(1);
+            print(0);
+            health -= 1;
             healthBar.setHealthBar(health);
             Destroy(other.gameObject);
         }
