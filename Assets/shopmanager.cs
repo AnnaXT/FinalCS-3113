@@ -8,7 +8,9 @@ public class shopmanager : MonoBehaviour
 {
     public int[,] shopItems = new int [5,5];
     public float coins;
+    public float outsidecoins;
     public Text CoinsTXT;
+    public Text outsidecoinsTXT;
 
 
     void Start()
@@ -42,9 +44,13 @@ public class shopmanager : MonoBehaviour
         if (coins >= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID])
         {
             coins -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
+            outsidecoins -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
             shopItems[3, ButtonRef.GetComponent<buttoninfo>().ItemID]++;
             CoinsTXT.text = "Coins:" + coins.ToString();
+            outsidecoinsTXT.text = outsidecoins.ToString();
             ButtonRef.GetComponent<buttoninfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
+            shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID] *= 2;
+            ButtonRef.GetComponent<buttoninfo>().PriceTxt.text = shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
         }
     }
 }
