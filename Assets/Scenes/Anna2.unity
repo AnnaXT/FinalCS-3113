@@ -4121,7 +4121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1747627926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4582,7 +4582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1873688796
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4621,6 +4621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89045d03fc8cf4fbc9ffe68c9e4f73cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soul: {fileID: 0}
 --- !u!114 &1873688798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5435,13 +5436,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy1
       objectReference: {fileID: 0}
-    - target: {fileID: 8213492410905253341, guid: a2fb9ca61da9343278a65b51ac8a40db, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 3042588177486105970, guid: a2fb9ca61da9343278a65b51ac8a40db, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8213492410905253341, guid: a2fb9ca61da9343278a65b51ac8a40db, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213492410905253341, guid: a2fb9ca61da9343278a65b51ac8a40db, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2fb9ca61da9343278a65b51ac8a40db, type: 3}

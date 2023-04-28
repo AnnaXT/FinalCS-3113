@@ -557,9 +557,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1169813205
-  m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1277746897, guid: 05b516d1fb3b54b1988b64710e793cad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -637,9 +637,15 @@ MonoBehaviour:
   aimJoystick: {fileID: 0}
   firePoint: {fileID: 8734169165173164644}
   healthBar: {fileID: 0}
+  soulUI: {fileID: 0}
+  hurtSnd: {fileID: 0}
+  dieSnd: {fileID: 0}
+  shootSnd: {fileID: 0}
   soul: 1000
   health: 10
+  maxHealth: 10
   playerSpeed: 5
+  ammo: 1
 --- !u!1 &8734169167177505468
 GameObject:
   m_ObjectHideFlags: 0

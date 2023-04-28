@@ -14,32 +14,17 @@ public class GameManager : MonoBehaviour
     public int bulletSpeed = 10;
     public int dmg = 1;
 
-    // public HealthBar healthBar;
-
     string levelName;
-
-    private bool GameOver = false;
 
     private void Awake()
     {   
         Scene scene = SceneManager.GetActiveScene();
         levelName = scene.name;
-
-        // if(GameObject.FindObjectsOfType<GameManager>().Length > 1)
-        // {
-        //     //print(GameObject.FindObjectsOfType<GameManager>());
-        //     Destroy(gameObject);
-        // }
-        // else
-        // {
-        // DontDestroyOnLoad(gameObject);
-        // }
     }
 
     void Start()
     {
         life = maxLife;
-        // healthBar.setMaxHealth(maxLife);
     }
 
     public void minusSoul(int amount)
@@ -61,11 +46,6 @@ public class GameManager : MonoBehaviour
         if (life > 0)
         {
             life -= amount;
-            // healthBar.setHealth(life);
-            
-            if (life == 0){
-                GameOver = true;
-            }
         }
     }
 
@@ -123,16 +103,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (GameOver){
-            StartCoroutine(swapToLost());
-            GameOver = false;
-        }
         screenChecker();
     }
 
-    IEnumerator swapToLost() {
-        yield return new WaitForSeconds(1);
-        soul = 0;
-        SceneManager.LoadScene("GameOver");
-    }
 }
