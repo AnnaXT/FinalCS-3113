@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public int bulletSpeed = 10;
     public int dmg = 1;
 
-    public Image healthBar;
+    // public HealthBar healthBar;
 
     string levelName;
 
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         soulUI.text = "" + soul;
         life = maxLife;
-
+        // healthBar.setMaxHealth(maxLife);
     }
 
     public void minusSoul(int amount)
@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         if (life > 0)
         {
             life -= amount;
+            // healthBar.setHealth(life);
             
             if (life == 0){
                 GameOver = true;
@@ -79,6 +80,10 @@ public class GameManager : MonoBehaviour
         {
             life += amount;
         }
+    }
+
+    public int getMaxLife(){
+        return maxLife;
     }
 
     public int getLife(){
@@ -123,9 +128,6 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-
-        healthBar.fillAmount = life / maxLife;
-
         if (GameOver){
             StartCoroutine(swapToLost());
             GameOver = false;
