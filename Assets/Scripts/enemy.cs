@@ -6,7 +6,7 @@ public class enemy : MonoBehaviour
 {
     Rigidbody _rigidbody;
     private GameObject player;
-    public EnemyHealthBar healthBar;
+    public HealthBar healthBar;
     public GameObject soul;
     public float speed = 0.2f;
     public int maxHealth = 2;
@@ -35,7 +35,7 @@ public class enemy : MonoBehaviour
         _animator = gameObject.GetComponent<Animator>();
 
         health = maxHealth;
-        healthBar.setMaxHealth();
+        healthBar.setMaxHealthBar(maxHealth);
 
         //_gameManager = GameObject.FindObjectOfType<GameManager>();
     }
@@ -89,7 +89,7 @@ public class enemy : MonoBehaviour
             print(0);
             Destroy(other.gameObject);
             changeHealth(-1);
-            healthBar.setHealth();
+            healthBar.setHealthBar(health);
             if (health == 0){
                 Destroy(gameObject);
                 Instantiate(soul, transform.position, Quaternion.identity);

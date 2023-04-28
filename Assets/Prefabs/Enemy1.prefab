@@ -210,10 +210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca65e32b20b749669a821a67e27c255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 4013835596536366567}
   soul: {fileID: 1743777843843613026, guid: f059634b604d34cefb92f9db6994dca4, type: 3}
   speed: 0.5
-  maxHealth: 1
+  maxHealth: 20
   interval: 2
 --- !u!1 &5684786742614669570
 GameObject:
@@ -225,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2454070880920471066}
   - component: {fileID: 3114145279438666604}
+  - component: {fileID: 4013835596536366567}
   m_Layer: 6
   m_Name: Health Bar
   m_TagString: Untagged
@@ -305,6 +306,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4013835596536366567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5684786742614669570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a22f58a9b5a4eae9d66856e869fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 3114145279438666604}
 --- !u!1 &8724245171216930647
 GameObject:
   m_ObjectHideFlags: 0
