@@ -1,36 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
 
-public class KillEnemy : MonoBehaviour
-{
-    int health = 20;
+// public class KillEnemy : MonoBehaviour
+// {
+//     int health = 20;
 
-    GameManager _gameManager;
+//     GameManager _gameManager;
 
-    public GameObject soul;
+//     public GameObject soul;
 
-    private void Start () {
-        _gameManager = GameObject.FindObjectOfType<GameManager>();
-    }
+//     private void Start () {
+//         _gameManager = GameObject.FindObjectOfType<GameManager>();
+//     }
     
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            Destroy(gameObject);
-        }
+//     private void OnCollisionEnter(Collision collision)
+//     {
+//         if(collision.gameObject.tag == "Player")
+//         {
+//             Destroy(gameObject);
+//         }
 
-        if (collision.gameObject.tag == "player bullet")
-        {
-            Destroy(collision.gameObject);
-            health -= _gameManager.getDmg();
-            if (health <= 0)
-            {
-                Destroy(gameObject);
-                Instantiate(soul, transform.position, Quaternion.identity);
-            }
-        }
-    }
+//         if (collision.gameObject.tag == "player bullet")
+//         {
+//             Destroy(collision.gameObject);
+//             health -= _gameManager.getDmg();
+//             if (health <= 0)
+//             {
+//                 Destroy(gameObject);
+//                 Instantiate(soul, transform.position, Quaternion.identity);
+//             }
+//         }
+//     }
 
-}
+// }

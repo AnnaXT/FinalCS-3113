@@ -8,6 +8,7 @@ public class enemy : MonoBehaviour
     private GameObject player;
     public HealthBar healthBar;
     public GameObject soul;
+    public GameObject explosion;
     public float speed = 0.2f;
     private int maxHealth = 2;
     int health;
@@ -96,6 +97,7 @@ public class enemy : MonoBehaviour
             changeHealth(-1);
             healthBar.setHealthBar(health);
             if (health == 0){
+                Instantiate(explosion, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 Instantiate(soul, transform.position, Quaternion.identity);
             }
