@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 4013835596536366567}
   soul: {fileID: 1743777843843613026, guid: f059634b604d34cefb92f9db6994dca4, type: 3}
+  explosion: {fileID: 4983580037076262328, guid: 940ff5d90a12d48db90c63b3a447b4f6, type: 3}
   speed: 0.5
   interval: 2
 --- !u!1 &5684786742614669570

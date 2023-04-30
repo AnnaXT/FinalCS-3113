@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7139029967141356863}
   - component: {fileID: 2687318496478076327}
   - component: {fileID: 4394549476226431767}
+  - component: {fileID: -5399353976391283392}
   m_Layer: 6
   m_Name: SS1_0
   m_TagString: soul
@@ -116,3 +117,17 @@ CapsuleCollider:
   m_Height: 0.58250004
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5399353976391283392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743777843843613026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d1f0b31671e469aab9159d1146973d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 5818271007871691654, guid: 22b6cf98b90584be09967e34d47251cd, type: 3}
+  floatStrength: 0.1

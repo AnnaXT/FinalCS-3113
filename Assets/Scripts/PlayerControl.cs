@@ -83,7 +83,6 @@ public class PlayerControl : MonoBehaviour
 
         if (health == 0)
         {
-            _audioSource.PlayOneShot(dieSnd);
             Destroy(gameObject); 
             SceneManager.LoadScene("lose");
         }
@@ -100,7 +99,6 @@ public class PlayerControl : MonoBehaviour
 
         if (other.CompareTag("enemy"))
         {
-            print(0);
             health -= 1;
             _audioSource.PlayOneShot(hurtSnd);
             healthBar.setHealthBar(health);

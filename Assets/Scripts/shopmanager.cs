@@ -10,14 +10,18 @@ public class shopmanager : MonoBehaviour
     public int[,] shopItems = new int [5,5];
     public float coins;
     public float outsidecoins;
+    public AudioClip shopSnd;
+    public AudioClip brokeSnd;
     public Text CoinsTXT;
     public TextMeshProUGUI outsidecoinsTXT;
     
     private PlayerControl _player;
+    AudioSource _audioSource;
 
     void Start()
     {
         _player = GameObject.FindObjectOfType<PlayerControl>();
+        _audioSource = GetComponent<AudioSource>();
         CoinsTXT.text = "Coins: " + coins;
 
         // IDs
@@ -46,6 +50,7 @@ public class shopmanager : MonoBehaviour
 
         if (coins >= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID])
         {
+            _audioSource.PlayOneShot(shopSnd);
             coins -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
             // outsidecoins = coins;
             _player.setSouls(-shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID]);
@@ -55,6 +60,9 @@ public class shopmanager : MonoBehaviour
             ButtonRef.GetComponent<buttoninfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
             shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID] *= 2;
             ButtonRef.GetComponent<buttoninfo>().PriceTxt.text = shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
+        }
+        else {
+            _audioSource.PlayOneShot(brokeSnd);
         }
     }
 
