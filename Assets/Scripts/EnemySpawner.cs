@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
         
         waitTime -= Time.deltaTime;
         if (waitTime <= 0){
-            print("Got here0");
+            //print("Got here0");
             // use exponential here maybe as well
             Spawn1(enemy1Limit);
             waitTime = interval;
