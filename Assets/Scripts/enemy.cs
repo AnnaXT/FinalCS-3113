@@ -84,7 +84,7 @@ public class enemy : MonoBehaviour
     }
 
     public void setHealth(int val){
-        print("reset health");
+        //print("reset health");
         health = val;
         maxHealth = val;
         healthBar.GetComponent<HealthBar>().setMaxHealthBar(maxHealth);
