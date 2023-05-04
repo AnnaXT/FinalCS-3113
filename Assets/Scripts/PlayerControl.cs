@@ -41,12 +41,14 @@ public class PlayerControl : MonoBehaviour
     private Animator _animator;
     private shopmanager _shop;
     private enemy _enemy;
+    private ParticleSystem _ps;
 
     private void Start () {
         rb = GetComponent<Rigidbody> ();
         _shop = GameObject.FindObjectOfType<shopmanager>();
         _enemy = GameObject.FindObjectOfType<enemy>();
         _animator = GetComponent<Animator>();
+        _ps = GetComponent<ParticleSystem>();
         _audioSource = GetComponent<AudioSource>();
         
         // _gameManager = GameObject.FindObjectOfType<GameManager>();
@@ -120,7 +122,7 @@ public class PlayerControl : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-         if (other.CompareTag("health"))
+        if (other.CompareTag("health"))
         {
             if ((health + (int)Math.Round(maxHealth * 0.2f)) > maxHealth)
             {
@@ -129,6 +131,7 @@ public class PlayerControl : MonoBehaviour
             {
                 health += (int)Math.Round(maxHealth * 0.2f);
             }
+            _ps.Play();
             _audioSource.PlayOneShot(healSnd, 0.5f);
             healthBar.setHealthBar(health);
             Destroy(other.gameObject);
