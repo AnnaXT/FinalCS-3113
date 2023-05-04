@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca65e32b20b749669a821a67e27c255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 5851792283905345532}
   soul: {fileID: 1743777843843613026, guid: f059634b604d34cefb92f9db6994dca4, type: 3}
   explosion: {fileID: 4983580037076262328, guid: 940ff5d90a12d48db90c63b3a447b4f6, type: 3}
   dieSnd: {fileID: 8300000, guid: b1f26106fe8a24d72912702093784beb, type: 3}
