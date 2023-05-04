@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class PlayerControl : MonoBehaviour
 {
 
     // public static Player instance;
-    
     public FixedJoystick moveJoystick;
     public FixedJoystick aimJoystick;
     public FirePoint firePoint;
     public HealthBar healthBar;
     public TextMeshProUGUI soulUI;
+    public GameObject explosion;
 
     public AudioClip hurtSnd;
-    public AudioClip dieSnd;
+    public AudioClip soulSnd;
     public AudioClip shootSnd;
+    public AudioClip clearSnd;
+    public AudioClip healSnd;
 
     Vector2 moveVelocity;
     AudioSource _audioSource;
@@ -27,18 +30,22 @@ public class PlayerControl : MonoBehaviour
     // GameManager _gameManager;
 
     private bool shooting;
-    public int soul = 1000;
+    public bool bought = false;
+    public int soul = 0;
     public int health = 10;
     public int maxHealth = 10;
-    public int playerSpeed = 5;
+    public float playerSpeed = 5;
     public float ammo = 0.5f;
+    private float ammoCount = 2; // inverse of ammo
 
     private Animator _animator;
     private shopmanager _shop;
+    private enemy _enemy;
 
     private void Start () {
         rb = GetComponent<Rigidbody> ();
         _shop = GameObject.FindObjectOfType<shopmanager>();
+        _enemy = GameObject.FindObjectOfType<enemy>();
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
         
@@ -94,13 +101,35 @@ public class PlayerControl : MonoBehaviour
             soul += 10;
             _shop.setCoin(10);
             soulUI.text = "" + soul;
+            _audioSource.PlayOneShot(soulSnd);
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("enemy"))
         {
             health -= 1;
-            _audioSource.PlayOneShot(hurtSnd);
+            _audioSource.PlayOneShot(hurtSnd, 0.5f);
+            healthBar.setHealthBar(health);
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Clear"))
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            _audioSource.PlayOneShot(clearSnd, 0.5f);
+            Destroy(other.gameObject);
+        }
+
+         if (other.CompareTag("health"))
+        {
+            if ((health + (int)Math.Round(maxHealth * 0.2f)) > maxHealth)
+            {
+                health = maxHealth;
+            } else
+            {
+                health += (int)Math.Round(maxHealth * 0.2f);
+            }
+            _audioSource.PlayOneShot(healSnd, 0.5f);
             healthBar.setHealthBar(health);
             Destroy(other.gameObject);
         }
@@ -114,7 +143,7 @@ public class PlayerControl : MonoBehaviour
             if (shooting)
             {
                 firePoint.Shoot();
-                _audioSource.PlayOneShot(shootSnd);
+                _audioSource.PlayOneShot(shootSnd, 0.3f);
             }
             yield return new WaitForSeconds(waitTime);
         }
@@ -126,18 +155,44 @@ public class PlayerControl : MonoBehaviour
         soulUI.text = "" + soul;
     }
 
+    public void setBuy(bool isBought)
+    {
+        bought = isBought;
+    }
+
     public void incrHealth()
     {
-        maxHealth += 1;
-        health += 1;
-        healthBar.setMaxHealthBar(maxHealth);
-        healthBar.setHealthBar(health);
+        if (bought)
+        {
+            maxHealth += 1;
+            if ((health + (int)Math.Round(maxHealth * 0.2f)) > maxHealth)
+            {
+                health = maxHealth;
+            } else
+            {
+                health += (int)Math.Round(maxHealth * 0.2f);
+            }
+            healthBar.setMaxHealthBar(maxHealth);
+            healthBar.setHealthBar(health);
+        }
+    }
+
+    public void incrSpeed()
+    {
+        if (bought)
+        {
+            playerSpeed += 0.1f;
+        }
     }
 
     public void incrAmmo()
     {
-        ammo *= 0.8f;
-        StopCoroutine(AutoFire(ammo));
-        StartCoroutine(AutoFire(ammo));
+        if (bought)
+        {
+            ammo = 1 / ( ammoCount + 1 );
+            ammoCount += 1;
+            StopCoroutine(AutoFire(ammo));
+            StartCoroutine(AutoFire(ammo));
+        }
     }
 }

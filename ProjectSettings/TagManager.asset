@@ -9,6 +9,9 @@ TagManager:
   - player bullet
   - Event
   - Bullet
+  - Clear
+  - health
+  - Enemy Bullet
   layers:
   - Default
   - TransparentFX
