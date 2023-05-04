@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  collectableSpawner: {fileID: 0}
+  collectableSpawner: {fileID: 7500090218264786804, guid: a78736aa06b544270825f0e5af772caa, type: 3}
   floatStrength: 0.1
 --- !u!114 &1207244925310022389
 MonoBehaviour:
