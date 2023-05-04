@@ -207,6 +207,12 @@ public class PlayerControl : MonoBehaviour
         foreach(GameObject go in GameObject.FindGameObjectsWithTag("enemy")){
             Destroy(go);
         }
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("Clear")){
+            Destroy(go);
+        }
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("health")){
+            Destroy(go);
+        }
         _animator.Play("PlayerDeath");
         yield return new WaitForSeconds(seconds * Time.timeScale);
         SceneManager.LoadScene("lose");
