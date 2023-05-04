@@ -92,8 +92,9 @@ public class PlayerControl : MonoBehaviour
 
         if (health == 0)
         {
-            Destroy(gameObject); 
-            SceneManager.LoadScene("lose");
+            StartCoroutine(GameOver(3));
+            Destroy(moveJoystick);
+            Destroy(aimJoystick);
         }
     }
 
@@ -197,5 +198,12 @@ public class PlayerControl : MonoBehaviour
             StopCoroutine(AutoFire(ammo));
             StartCoroutine(AutoFire(ammo));
         }
+    }
+
+    IEnumerator GameOver(float seconds)
+    {
+        Time.timeScale = 0.0000001f;
+        yield return new WaitForSeconds(seconds * Time.timeScale);
+        SceneManager.LoadScene("lose");
     }
 }
