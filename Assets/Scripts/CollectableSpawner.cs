@@ -5,27 +5,26 @@ using UnityEngine;
 public class CollectableSpawner : MonoBehaviour
 {
     
-public GameObject healthCollectable;
-    public GameObject bombCollectable;
+    public GameObject healthCollectable;
+    public GameObject bombCollectable;
 
-    private int maxHC = 5; // max health collectable count
-    private int maxBC = 3; // max bomb cillectable count
+    private int maxHC = 5; // max health collectable count
+    private int maxBC = 2; // max bomb cillectable count
 
-    private int currHC = 0;
-    private int currBC = 0;
+     private int currHC = 0;
+     private int currBC = 0;
 
-    private GameObject player;
+    private GameObject player;
+    void Start()
+     {
+         player = GameObject.FindGameObjectWithTag("Player");
+ 
+    }
 
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        
-    }
-
-    void Update()
-    {
-        if (currHC < maxHC || currBC < maxBC){
-            float x = player.transform.position.x;
+     void Update()
+    {
+         if (currHC < maxHC || currBC < maxBC){
+             float x = player.transform.position.x;
             float y = player.transform.position.y;
             if (currHC < maxHC){
                 bool isNeg1 = Random.Range(0,10) < 5;
