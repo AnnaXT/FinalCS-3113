@@ -92,7 +92,7 @@ public class PlayerControl : MonoBehaviour
 
         if (health == 0)
         {
-            StartCoroutine(GameOver(3));
+            StartCoroutine(GameOver(0.8f));
             Destroy(moveJoystick);
             Destroy(aimJoystick);
         }
@@ -202,7 +202,12 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator GameOver(float seconds)
     {
-        Time.timeScale = 0.0000001f;
+        playerSpeed = 0;
+        Destroy(GameObject.FindObjectOfType<FixedJoystick>());
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("enemy")){
+            Destroy(go);
+        }
+        _animator.Play("PlayerDeath");
         yield return new WaitForSeconds(seconds * Time.timeScale);
         SceneManager.LoadScene("lose");
     }
