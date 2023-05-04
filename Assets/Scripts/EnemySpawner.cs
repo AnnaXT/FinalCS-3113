@@ -37,6 +37,10 @@ public class EnemySpawner : MonoBehaviour
         timeTracker += Time.deltaTime;
         //print(timeTracker);
 
+        int enemy1Limit = (int)timeTracker;
+        int enemy2Limit = (int)(timeTracker*0.5f);
+        int enemy3Limit = (int)(timeTracker*0.3f);
+
         //life scaling according to time
         // Maybe use Mathf.Pow(float, power) to do scaling
         enemy1Health = (int)Mathf.Round(3*(1 + (timeTracker/50)));
@@ -52,17 +56,17 @@ public class EnemySpawner : MonoBehaviour
         if (waitTime <= 0){
             print("Got here0");
             // use exponential here maybe as well
-            Spawn1((int)timeTracker);
+            Spawn1(enemy1Limit);
             waitTime = interval;
             enemy2Chance = Random.Range(0,100);
         }
         if (enemy2Chance < 30){
-            Spawn2((int)(timeTracker*0.5f));
+            Spawn2(enemy2Limit);
             enemy2Chance = 100f;
             enemy3Chance = Random.Range(0,100);
         }
         if (enemy3Chance < 30){
-            Spawn3((int)(timeTracker*0.1f));
+            Spawn3(enemy3Limit);
             enemy3Chance = 100f;
         }
         

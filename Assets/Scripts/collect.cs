@@ -25,14 +25,15 @@ public class collect : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Player")){
             Instantiate(explosion, transform.position, Quaternion.identity);
-            bool isHealth = this.CompareTag("health");
-            if (isHealth){
-                collectableSpawner.GetComponent<CollectableSpawner>().decreaseHC();
-            }
-            else{
-                collectableSpawner.GetComponent<CollectableSpawner>().decreaseBC();
-            }
+        if (this.CompareTag("health")){
+            collectableSpawner.GetComponent<CollectableSpawner>().decreaseHC();
             Destroy(this);
+        }
+        else if (this.CompareTag("Clear")){
+            collectableSpawner.GetComponent<CollectableSpawner>().decreaseBC();
+            Destroy(this);
+        }
+            //Destroy(this);
         }
     }
 }
