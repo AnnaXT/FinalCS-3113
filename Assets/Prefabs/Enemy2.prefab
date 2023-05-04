@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 937749397, guid: 74b229b9b9e684a0b8b30d819dd00d7d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,7 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  soul: {fileID: 0}
+  soul: {fileID: 1743777843843613026, guid: f059634b604d34cefb92f9db6994dca4, type: 3}
+  explosion: {fileID: 4983580037076262328, guid: 940ff5d90a12d48db90c63b3a447b4f6, type: 3}
   speed: 1
   interval: 2
 --- !u!65 &-4006948360488979357
