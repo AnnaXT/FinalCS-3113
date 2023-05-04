@@ -13,7 +13,7 @@ public class enemy : MonoBehaviour
     public AudioClip dieSnd;
     public float speed = 0.2f;
     int maxHealth = 2;
-    int health;
+    int health = 2;
 
     private bool chase = true;
     public float interval = 2f;
@@ -80,15 +80,18 @@ public class enemy : MonoBehaviour
 
     public void changeHealth(int val){
         health += val;
-        healthBar.GetComponent<HealthBar>().setHealthBar(health);
+        healthBar.setHealthBar(health);
     }
 
     public void setHealth(int val){
-        print("reset health");
+        //print("reset health");
         health = val;
         maxHealth = val;
+        print(healthBar.GetComponent<HealthBar>());
         healthBar.GetComponent<HealthBar>().setMaxHealthBar(maxHealth);
         healthBar.GetComponent<HealthBar>().setHealthBar(health);
+        //healthBar.setMaxHealthBar(maxHealth);
+        //healthBar.setHealthBar(health);
     }
 
     public int getHealth(){

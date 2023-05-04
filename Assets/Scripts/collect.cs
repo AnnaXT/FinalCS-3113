@@ -8,6 +8,7 @@ public class collect : MonoBehaviour
     float originalY;
     public GameObject explosion;
     public GameObject collectableSpawner;
+    public GameObject tileGenerator;
 
     public float floatStrength;
 
@@ -23,14 +24,18 @@ public class collect : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
+        print("entered collect");
         if (other.CompareTag("Player")){
-            Instantiate(explosion, transform.position, Quaternion.identity);
+            //Instantiate(explosion, transform.position, Quaternion.identity);
         if (this.CompareTag("health")){
+            print("got health");
             collectableSpawner.GetComponent<CollectableSpawner>().decreaseHC();
             Destroy(this);
         }
         else if (this.CompareTag("Clear")){
+            print("cleared screen");
             collectableSpawner.GetComponent<CollectableSpawner>().decreaseBC();
+            //tileGenerator.GetComponent<TileGenerator>().randChangeZone();
             Destroy(this);
         }
             //Destroy(this);

@@ -15,13 +15,13 @@ public class TileGenerator : MonoBehaviour
     private int tileNum = 3;
 
     private float time = 0;
+    private int spawnInd = 1;
 
-    private List<List<GameObject>> tiles;
+    private List<List<GameObject>> tiles = new List<List<GameObject>>();
 
 
     void Start()
     {
-        tiles = new List<List<GameObject>>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         spawnXRight = playerTransform.position.x + tileLength;
         spawnXLeft = playerTransform.position.x - tileLength;
@@ -45,10 +45,10 @@ public class TileGenerator : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
+        spawnInd = (int)Random.Range(0,3);
         // if ((int)time/10 == 2){
         //     changeZone(1);
         // }
-        int spawnInd = (int)Random.Range(0,3);
         if(playerTransform.position.x > (spawnXRight - tileNum * tileLength)){
             SpawnTileRight(spawnInd);
             if(playerTransform.position.x > (spawnXLeft + tileNum * tileLength)){
@@ -172,16 +172,26 @@ public class TileGenerator : MonoBehaviour
     }
 
     void changeZone(int prefabIndex=-1){
+        print("Arrived");
         for(int i = 0; i < tiles.Count; ++i){
             for(int j = 0; j < tiles[i].Count; ++j){
                 GameObject go;
-                go = Instantiate(tilePrefabs[prefabIndex]) as GameObject;
+                go = Instantiate(tilePrefabs[2]) as GameObject;
                 go.transform.position = tiles[i][j].transform.position;
                 Destroy(tiles[i][j]);
                 tiles[i][j] = go;
             }
         }
 
+    }
+
+    public void randChangeZone(){
+        int ind = (int)Random.Range(0,3);
+        while (spawnInd == ind || ind > 2){
+            ind = (int)Random.Range(0,3);
+        }
+        spawnInd = ind;
+        //changeZone(spawnInd);
     }
 
     

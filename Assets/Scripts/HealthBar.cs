@@ -13,8 +13,8 @@ public class HealthBar : MonoBehaviour
 
     public void setMaxHealthBar(int health)
     {
-        print("maxHset");
-        print(health);
+        //print("maxHset");
+        //print(health);
         slider.maxValue = health;
         // slider.value = health;
 
@@ -22,8 +22,8 @@ public class HealthBar : MonoBehaviour
 
     public void setHealthBar(int health)
     {
-        print("valSet");
-        print(health);
+        //print("valSet");
+        //print(health);
         slider.value = health;
     }
 }

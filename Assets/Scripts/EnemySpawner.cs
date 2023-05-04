@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
         
         waitTime -= Time.deltaTime;
         if (waitTime <= 0){
-            print("Got here0");
+            //print("Got here0");
             // use exponential here maybe as well
             Spawn1(enemy1Limit);
             waitTime = interval;
@@ -89,11 +89,11 @@ public class EnemySpawner : MonoBehaviour
                 rand2 = -rand2;
             }
 
-            print("got here1");
+            //print("got here1");
 
             Vector2 position = new Vector2(x + rand1, y + rand2);
             GameObject enemy = Instantiate(enemy1, position, Quaternion.identity);
-            print("got here2");
+            //print("got here2");
             enemy.GetComponent<enemy>().setSpeed(enemy1Speed);
             enemy.GetComponent<enemy>().setHealth(enemy1Health);
         }

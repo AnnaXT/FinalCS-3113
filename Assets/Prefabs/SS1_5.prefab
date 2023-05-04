@@ -113,7 +113,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5684860127115149235}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.27125
   m_Height: 1.0475
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
   collectableSpawner: {fileID: 7500090218264786804, guid: a78736aa06b544270825f0e5af772caa, type: 3}
+  tileGenerator: {fileID: 6251417726212813305, guid: 4ac6d33fc532048d79a67c7064b94c6f, type: 3}
   floatStrength: 0.1
 --- !u!114 &7004891482296234314
 MonoBehaviour:
