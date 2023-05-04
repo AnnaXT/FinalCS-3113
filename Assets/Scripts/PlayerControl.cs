@@ -108,7 +108,7 @@ public class PlayerControl : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (other.CompareTag("enemy"))
+        if (other.CompareTag("enemy") || other.CompareTag("Enemy Bullet"))
         {
             health -= 1;
             _audioSource.PlayOneShot(hurtSnd, 0.5f);
