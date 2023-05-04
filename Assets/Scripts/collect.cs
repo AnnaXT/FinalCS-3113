@@ -35,7 +35,7 @@ public class collect : MonoBehaviour
         else if (this.CompareTag("Clear")){
             print("cleared screen");
             collectableSpawner.GetComponent<CollectableSpawner>().decreaseBC();
-            tileGenerator.GetComponent<TileGenerator>().randChangeZone();
+            //tileGenerator.GetComponent<TileGenerator>().randChangeZone();
             Destroy(this);
         }
             //Destroy(this);
