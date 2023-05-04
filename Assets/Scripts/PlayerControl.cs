@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class PlayerControl : MonoBehaviour
 {
 
     // public static Player instance;
-    
     public FixedJoystick moveJoystick;
     public FixedJoystick aimJoystick;
     public FirePoint firePoint;
     public HealthBar healthBar;
     public TextMeshProUGUI soulUI;
+    public GameObject explosion;
 
     public AudioClip hurtSnd;
-    public AudioClip dieSnd;
+    public AudioClip soulSnd;
     public AudioClip shootSnd;
+    public AudioClip clearSnd;
+    public AudioClip healSnd;
 
     Vector2 moveVelocity;
     AudioSource _audioSource;
@@ -27,7 +30,7 @@ public class PlayerControl : MonoBehaviour
     // GameManager _gameManager;
 
     private bool shooting;
-    public int soul = 1000;
+    public int soul = 0;
     public int health = 10;
     public int maxHealth = 10;
     public int playerSpeed = 5;
@@ -35,10 +38,12 @@ public class PlayerControl : MonoBehaviour
 
     private Animator _animator;
     private shopmanager _shop;
+    private enemy _enemy;
 
     private void Start () {
         rb = GetComponent<Rigidbody> ();
         _shop = GameObject.FindObjectOfType<shopmanager>();
+        _enemy = GameObject.FindObjectOfType<enemy>();
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
         
@@ -94,13 +99,29 @@ public class PlayerControl : MonoBehaviour
             soul += 10;
             _shop.setCoin(10);
             soulUI.text = "" + soul;
+            _audioSource.PlayOneShot(soulSnd);
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("enemy"))
         {
             health -= 1;
-            _audioSource.PlayOneShot(hurtSnd);
+            _audioSource.PlayOneShot(hurtSnd, 0.5f);
+            healthBar.setHealthBar(health);
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Clear"))
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            _audioSource.PlayOneShot(clearSnd, 0.5f);
+            Destroy(other.gameObject);
+        }
+
+         if (other.CompareTag("health"))
+        {
+            health += (int)Math.Round(maxHealth * 0.2f);
+            _audioSource.PlayOneShot(healSnd, 0.5f);
             healthBar.setHealthBar(health);
             Destroy(other.gameObject);
         }
@@ -114,7 +135,7 @@ public class PlayerControl : MonoBehaviour
             if (shooting)
             {
                 firePoint.Shoot();
-                _audioSource.PlayOneShot(shootSnd);
+                _audioSource.PlayOneShot(shootSnd, 0.3f);
             }
             yield return new WaitForSeconds(waitTime);
         }
@@ -128,8 +149,8 @@ public class PlayerControl : MonoBehaviour
 
     public void incrHealth()
     {
-        maxHealth += 1;
-        health += 1;
+        maxHealth += (int)Math.Round(maxHealth * 0.2f);;
+        health += (int)Math.Round(maxHealth * 0.2f);;
         healthBar.setMaxHealthBar(maxHealth);
         healthBar.setHealthBar(health);
     }

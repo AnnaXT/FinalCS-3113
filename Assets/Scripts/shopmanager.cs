@@ -50,7 +50,7 @@ public class shopmanager : MonoBehaviour
 
         if (coins >= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID])
         {
-            _audioSource.PlayOneShot(shopSnd);
+            _audioSource.PlayOneShot(shopSnd, 0.5f);
             coins -= shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID];
             // outsidecoins = coins;
             _player.setSouls(-shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID]);
@@ -62,7 +62,7 @@ public class shopmanager : MonoBehaviour
             ButtonRef.GetComponent<buttoninfo>().PriceTxt.text = shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
         }
         else {
-            _audioSource.PlayOneShot(brokeSnd);
+            _audioSource.PlayOneShot(brokeSnd, 1);
         }
     }
 
