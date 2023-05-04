@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4453733252884096670}
   - component: {fileID: 4453733252884096671}
   - component: {fileID: 4453733252884096668}
+  - component: {fileID: 1207244925310022389}
   m_Layer: 6
   m_Name: SS1_6
   m_TagString: health
@@ -130,4 +131,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 5818271007871691654, guid: 22b6cf98b90584be09967e34d47251cd, type: 3}
+  collectableSpawner: {fileID: 0}
   floatStrength: 0
+--- !u!114 &1207244925310022389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453733252884096669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a7f74798eaf4ea593d4261d2dc8c19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 20
+  collectableSpawner: {fileID: 7500090218264786804, guid: a78736aa06b544270825f0e5af772caa, type: 3}

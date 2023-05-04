@@ -7,6 +7,7 @@ public class collect : MonoBehaviour
     Vector2 floatY;
     float originalY;
     public GameObject explosion;
+    public GameObject collectableSpawner;
 
     public float floatStrength;
 
@@ -24,6 +25,13 @@ public class collect : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Player")){
             Instantiate(explosion, transform.position, Quaternion.identity);
+            bool isHealth = this.CompareTag("health");
+            if (isHealth){
+                collectableSpawner.GetComponent<CollectableSpawner>().decreaseHC();
+            }
+            else{
+                collectableSpawner.GetComponent<CollectableSpawner>().decreaseBC();
+            }
             Destroy(this);
         }
     }
