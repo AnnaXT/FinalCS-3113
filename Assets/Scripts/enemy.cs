@@ -80,13 +80,15 @@ public class enemy : MonoBehaviour
 
     public void changeHealth(int val){
         health += val;
-        healthBar.setHealthBar(health);
+        healthBar.GetComponent<HealthBar>().setHealthBar(health);
     }
 
     public void setHealth(int val){
         print("reset health");
         health = val;
-        healthBar.setMaxHealthBar(maxHealth);
+        maxHealth = val;
+        healthBar.GetComponent<HealthBar>().setMaxHealthBar(maxHealth);
+        healthBar.GetComponent<HealthBar>().setHealthBar(health);
     }
 
     public int getHealth(){
