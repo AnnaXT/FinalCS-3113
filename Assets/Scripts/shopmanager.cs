@@ -8,8 +8,8 @@ using TMPro;
 public class shopmanager : MonoBehaviour
 {
     public int[,] shopItems = new int [5,5];
-    public float coins;
-    public float outsidecoins;
+    public float coins = 0;
+    public float outsidecoins = 0;
     public AudioClip shopSnd;
     public AudioClip brokeSnd;
     public Text CoinsTXT;
@@ -60,9 +60,11 @@ public class shopmanager : MonoBehaviour
             ButtonRef.GetComponent<buttoninfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
             shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID] *= 2;
             ButtonRef.GetComponent<buttoninfo>().PriceTxt.text = shopItems[2, ButtonRef.GetComponent<buttoninfo>().ItemID].ToString();
+            _player.setBuy(true);
         }
         else {
             _audioSource.PlayOneShot(brokeSnd, 1);
+            _player.setBuy(false);
         }
     }
 
