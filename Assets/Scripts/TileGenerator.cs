@@ -15,6 +15,7 @@ public class TileGenerator : MonoBehaviour
     private int tileNum = 3;
 
     private float time = 0;
+    private int spawnInd = 0;
 
     private List<List<GameObject>> tiles;
 
@@ -48,7 +49,6 @@ public class TileGenerator : MonoBehaviour
         // if ((int)time/10 == 2){
         //     changeZone(1);
         // }
-        int spawnInd = (int)Random.Range(0,3);
         if(playerTransform.position.x > (spawnXRight - tileNum * tileLength)){
             SpawnTileRight(spawnInd);
             if(playerTransform.position.x > (spawnXLeft + tileNum * tileLength)){
@@ -172,6 +172,7 @@ public class TileGenerator : MonoBehaviour
     }
 
     void changeZone(int prefabIndex=-1){
+        print("Arrived");
         for(int i = 0; i < tiles.Count; ++i){
             for(int j = 0; j < tiles[i].Count; ++j){
                 GameObject go;
@@ -182,6 +183,15 @@ public class TileGenerator : MonoBehaviour
             }
         }
 
+    }
+
+    public void randChangeZone(){
+        int ind = (int)Random.Range(0,3);
+        while (spawnInd == ind || ind > 2){
+            ind = (int)Random.Range(0,3);
+        }
+        spawnInd = ind;
+        changeZone(spawnInd);
     }
 
     
