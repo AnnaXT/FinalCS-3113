@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class soul : MonoBehaviour
+public class collect : MonoBehaviour
 {
     Vector2 floatY;
     float originalY;

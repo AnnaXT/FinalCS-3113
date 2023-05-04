@@ -5,12 +5,14 @@ using UnityEngine;
 public class enemy : MonoBehaviour
 {
     Rigidbody _rigidbody;
+    AudioSource _audioSource;
     private GameObject player;
     public HealthBar healthBar;
     public GameObject soul;
     public GameObject explosion;
+    public AudioClip dieSnd;
     public float speed = 0.2f;
-    private int maxHealth = 2;
+    int maxHealth = 2;
     int health;
 
     private bool chase = true;
@@ -37,6 +39,7 @@ public class enemy : MonoBehaviour
 
         health = maxHealth;
         GameObject temp = gameObject.transform.Find("Canvas (1)/Health Bar").gameObject;
+        _audioSource = GetComponent<AudioSource>();
         healthBar = temp.GetComponent<HealthBar>();
         healthBar.setMaxHealthBar(maxHealth);
 
@@ -93,6 +96,7 @@ public class enemy : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("player bullet")){
             print(health);
+            _audioSource.PlayOneShot(dieSnd, 1);
             Destroy(other.gameObject);
             changeHealth(-1);
             healthBar.setHealthBar(health);
