@@ -12,6 +12,7 @@ public class enemy : MonoBehaviour
     public GameObject explosion;
     public AudioClip dieSnd;
     public float speed = 0.2f;
+    public int bulletDmg = 1;
     int maxHealth = 2;
     int health = 2;
 
@@ -20,15 +21,6 @@ public class enemy : MonoBehaviour
     private float waitTime = 2f;
 
     private Animator _animator;
-    //GameManager _gameManager;
-
-    // private void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if(collision.GameObject.tag == "bullet")
-    //     {
-    //         Destroy(collision.GameObject);
-    //     }
-    // }
 
     void Start()
     {
@@ -83,6 +75,14 @@ public class enemy : MonoBehaviour
         healthBar.setHealthBar(health);
     }
 
+    public int getBulletDmg(){
+        return bulletDmg;
+    }
+
+    public void setBulletDmg(int val){
+        bulletDmg += val;
+    }
+
     public void setHealth(int val){
         //print("reset health");
         health = val;
@@ -103,7 +103,7 @@ public class enemy : MonoBehaviour
             print(health);
             _audioSource.PlayOneShot(dieSnd, 1);
             Destroy(other.gameObject);
-            changeHealth(-1);
+            changeHealth(-bulletDmg);
             healthBar.setHealthBar(health);
             if (health == 0){
                 Instantiate(explosion, transform.position, Quaternion.identity);
