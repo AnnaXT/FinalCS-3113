@@ -124,7 +124,6 @@ public class PlayerControl : MonoBehaviour
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
             _audioSource.PlayOneShot(clearSnd, 0.5f);
-            Destroy(other.gameObject);
         }
 
         if (other.CompareTag("health"))
@@ -139,7 +138,6 @@ public class PlayerControl : MonoBehaviour
             _ps.Play();
             _audioSource.PlayOneShot(healSnd, 0.5f);
             healthBar.setHealthBar(health);
-            Destroy(other.gameObject);
         }
 
     }

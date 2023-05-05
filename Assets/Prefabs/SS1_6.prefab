@@ -133,8 +133,8 @@ MonoBehaviour:
   explosion: {fileID: 0}
   tileGenerator: {fileID: 6251417726212813305, guid: 4ac6d33fc532048d79a67c7064b94c6f, type: 3}
   floatStrength: 0.1
-  healthCollectable: {fileID: 0}
-  bombCollectable: {fileID: 0}
+  healthCollectable: {fileID: 4453733252884096669}
+  bombCollectable: {fileID: 5684860127115149235, guid: 005e50a9a7a8e41eca2ad090212f8640, type: 3}
 --- !u!114 &1207244925310022389
 MonoBehaviour:
   m_ObjectHideFlags: 0
