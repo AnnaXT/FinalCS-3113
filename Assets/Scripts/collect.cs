@@ -27,16 +27,16 @@ public class collect : MonoBehaviour
         print("entered collect");
         if (other.CompareTag("Player")){
             //Instantiate(explosion, transform.position, Quaternion.identity);
-        if (this.CompareTag("health")){
-            print("got health");
-            collectableSpawner.GetComponent<CollectableSpawner>().decreaseHC();
-            Destroy(this);
-        }
-        else if (this.CompareTag("Clear")){
-            print("cleared screen");
-            collectableSpawner.GetComponent<CollectableSpawner>().decreaseBC();
+            if (this.CompareTag("health")){
+                print("got health");
+                Destroy(this);
+                collectableSpawner.GetComponent<CollectableSpawner>().decreaseHC(1);
+            }
+            else if (this.CompareTag("Clear")){
+                print("cleared screen");
+                Destroy(this);
+                collectableSpawner.GetComponent<CollectableSpawner>().decreaseBC(1);
             //tileGenerator.GetComponent<TileGenerator>().randChangeZone();
-            Destroy(this);
         }
             //Destroy(this);
         }
