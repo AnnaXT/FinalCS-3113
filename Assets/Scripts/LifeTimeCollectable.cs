@@ -17,7 +17,6 @@ public class LifeTimeCollectable : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(timer());
-        Destroy(gameObject,10);
     }
 
     //void Update()
@@ -111,7 +110,7 @@ public class LifeTimeCollectable : MonoBehaviour
             GameObject newBC = Instantiate(bombCollectable, position, Quaternion.identity);
             //collectableSpawner.GetComponent<CollectableSpawner>().decreaseBC();
         }
-        Destroy(this);
+        Destroy(gameObject);
 
     }
 
