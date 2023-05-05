@@ -37,7 +37,6 @@ public class collect : MonoBehaviour
             //Instantiate(explosion, transform.position, Quaternion.identity);
             if (this.CompareTag("health")){
                 print("got health");
-                Destroy(this);
                 //collectableSpawner.GetComponent<CollectableSpawner>().decreaseHC();
                 float x = player.transform.position.x;
                 float y = player.transform.position.y;
@@ -55,10 +54,10 @@ public class collect : MonoBehaviour
                 }
                 Vector2 position = new Vector2(x + rand1, y + rand2);
                 GameObject newHC = Instantiate(healthCollectable, position, Quaternion.identity);
+                Destroy(gameObject);
             }
             else if (this.CompareTag("Clear")){
                 print("cleared screen");
-                Destroy(this);
                 float x = player.transform.position.x;
                 float y = player.transform.position.y;
                 bool isNeg1 = Random.Range(0,10) < 5;
@@ -73,6 +72,7 @@ public class collect : MonoBehaviour
                 }
                 Vector2 position = new Vector2(x + rand1, y + rand2);
                 GameObject newBC = Instantiate(bombCollectable, position, Quaternion.identity);
+                Destroy(gameObject);
                 //collectableSpawner.GetComponent<CollectableSpawner>().decreaseBC();
             //tileGenerator.GetComponent<TileGenerator>().randChangeZone();
         }
