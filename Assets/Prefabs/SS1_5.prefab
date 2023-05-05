@@ -145,9 +145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  collectableSpawner: {fileID: 7500090218264786804, guid: a78736aa06b544270825f0e5af772caa, type: 3}
   tileGenerator: {fileID: 6251417726212813305, guid: 4ac6d33fc532048d79a67c7064b94c6f, type: 3}
   floatStrength: 0.1
+  healthCollectable: {fileID: 4453733252884096669, guid: 0c9f50659833b402c95e34628e8364a9, type: 3}
+  bombCollectable: {fileID: 5684860127115149235}
 --- !u!114 &7004891482296234314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,5 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a7f74798eaf4ea593d4261d2dc8c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 20
-  collectableSpawner: {fileID: 7500090218264786804, guid: a78736aa06b544270825f0e5af772caa, type: 3}
+  maxTime: 10
+  time: 10
+  healthCollectable: {fileID: 4453733252884096669, guid: 0c9f50659833b402c95e34628e8364a9, type: 3}
+  bombCollectable: {fileID: 5684860127115149235}
