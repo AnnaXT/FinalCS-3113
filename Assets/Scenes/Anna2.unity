@@ -12360,7 +12360,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 7f337156b1b3a4229b7d915469f1255f, type: 3}
     - target: {fileID: 8734169165748750412, guid: 587507b8f7a1546f49e7c01fb8ac588f, type: 3}
       propertyPath: health
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8734169165748750412, guid: 587507b8f7a1546f49e7c01fb8ac588f, type: 3}
       propertyPath: soulUI
