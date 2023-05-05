@@ -387,7 +387,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1817520657}
         m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
-        m_MethodName: incrAmmo
+        m_MethodName: incrSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5393,7 +5393,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1817520657}
         m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
-        m_MethodName: incrAmmo
+        m_MethodName: incrBulletDmg
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11173,6 +11173,7 @@ MonoBehaviour:
   explosion: {fileID: 0}
   dieSnd: {fileID: 0}
   speed: 0.2
+  bulletDmg: 1
   interval: 2
 --- !u!212 &1873688799
 SpriteRenderer:

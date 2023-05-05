@@ -60,6 +60,8 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
+        _enemy = GameObject.FindObjectOfType<enemy>();
+
         // movement
         moveVelocity = new Vector3 (moveJoystick.Horizontal, moveJoystick.Vertical, 0f);
         if (moveVelocity[0] == 0 && moveVelocity[1] == 0){
@@ -185,7 +187,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (bought)
         {
-            playerSpeed += 0.1f;
+            playerSpeed += 1;
         }
     }
 
@@ -197,6 +199,15 @@ public class PlayerControl : MonoBehaviour
             ammoCount += 1;
             StopCoroutine(AutoFire(ammo));
             StartCoroutine(AutoFire(ammo));
+        }
+    }
+
+    public void incrBulletDmg()
+    {
+        if (bought)
+        {
+            _enemy.setBulletDmg(2);
+            print(_enemy.getBulletDmg());
         }
     }
 
