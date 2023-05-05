@@ -17,6 +17,7 @@ public class timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeIsRunning = true;
         if (timeIsRunning)
         {
             if (timeRemaining >= 0)
