@@ -16,11 +16,13 @@ public class Scene1 : MonoBehaviour
     void Start()
     {
         timeIsRunning = true;
+        timeRemaining = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (timeIsRunning)
         {
             if (timeRemaining >= 0)
@@ -56,7 +58,14 @@ public class Scene1 : MonoBehaviour
         }
         
         
-    }
+     }
+    // public void reset()
+    // {
+    //     timeRemaining = 0;
+    //     DisplayTime(timeRemaining);
+    // }
+
+    
     // public void SetName()
     // {
     //     time = inputField.text;
