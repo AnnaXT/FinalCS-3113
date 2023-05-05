@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     private GameObject player;
-    public float interval = 2f;
+    public float interval = 8f;
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
@@ -37,9 +37,11 @@ public class EnemySpawner : MonoBehaviour
         timeTracker += Time.deltaTime;
         //print(timeTracker);
 
-        int enemy1Limit = (int)timeTracker;
-        int enemy2Limit = (int)(timeTracker*0.5f);
-        int enemy3Limit = (int)(timeTracker*0.3f);
+        //print(Mathf.Pow(1.1, timeTracker));
+
+        int enemy1Limit = (int)(timeTracker*0.5f);
+        int enemy2Limit = (int)(timeTracker*0.3f);
+        int enemy3Limit = (int)(timeTracker*0.2f);
 
         //life scaling according to time
         // Maybe use Mathf.Pow(float, power) to do scaling
@@ -49,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
 
         // speed scaling according to time
         enemy1Speed = 0.5f*(1 + (timeTracker/50));
-        enemy2Speed = 1f*(1 + (timeTracker/50));
+        enemy2Speed = 1.5f*(1 + (timeTracker/50));
         enemy3Speed = 0.1f*(1 + (timeTracker/50));
         
         waitTime -= Time.deltaTime;
